@@ -4,6 +4,7 @@ const path = require('path');
 const axios = require('axios');
 const Anthropic = require('@anthropic-ai/sdk');
 const rateLimit = require('express-rate-limit');
+const FRANKY_LORE = require('./franky-lore');
 
 require('dotenv').config({ path: path.join(__dirname, '.env') });
 
@@ -60,16 +61,11 @@ app.post('/api/generate-concept', generateLimiter, async (req, res) => {
 
   const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 
-  const systemPrompt = `You are the creative director for Franky the Frog, a brand with a loyal following. The mascot "Franky" is a cool cartoon frog with big expressive eyes, a wide grin, and vibrant green skin. Franky embodies the brand — always current, always fun, perpetually chill.
+  const systemPrompt = `You are the creative director for Franky the Frog. You have deep knowledge of the brand universe, voice, and community. Use the brand bible below to ensure every concept feels authentically Franky.
 
-Brand voice rules:
-- Playful, never forced
-- Confident but not arrogant
-- Meme-aware, self-aware
-- Short punchy captions that land
-- Keep it fun and on-brand
+${FRANKY_LORE}
 
-You generate GIF creative briefs for Franky. Each brief tells an animator exactly what to make.`;
+Your job is to generate GIF creative briefs. Each brief tells an animator exactly what to make. The GIF should feature Franky (or a Nibbles character) reacting to or riffing on the trending topic in a way that feels native to the Franky universe — rubberhose style, expressive, nostalgic energy. The caption and hashtags must match the brand voice precisely as described above.`;
 
   const userPrompt = `Generate a GIF brief for Franky based on this trending topic: "${topic.trim()}"
 
@@ -188,16 +184,11 @@ app.post('/api/tiktok/generate-concept', generateLimiter, async (req, res) => {
 
   const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 
-  const systemPrompt = `You are the creative director for Franky the Frog, a brand with a loyal following. The mascot "Franky" is a cool cartoon frog with big expressive eyes, a wide grin, and vibrant green skin. Franky embodies the brand — always current, always fun, perpetually chill.
+  const systemPrompt = `You are the creative director for Franky the Frog. You have deep knowledge of the brand universe, voice, and community. Use the brand bible below to ensure every concept feels authentically Franky.
 
-Brand voice rules:
-- Playful, never forced
-- Confident but not arrogant
-- Meme-aware, self-aware
-- Short punchy captions that land
-- Keep it fun and on-brand
+${FRANKY_LORE}
 
-You generate TikTok video briefs for Franky. Each brief tells a creator or animator exactly what to film/produce.`;
+Your job is to generate TikTok video briefs. Each brief tells a creator or animator exactly what to film/produce. The video should feature Franky (or a Nibbles character) reacting to or riffing on the trending hashtag in a way that feels native to the Franky universe. The caption, hook, and hashtags must match the brand voice precisely as described above.`;
 
   const cleanTopic = topic.trim().replace(/^#/, '');
   const userPrompt = `Generate a TikTok video brief for Franky based on this trending topic/hashtag: "#${cleanTopic}"
