@@ -60,7 +60,7 @@ app.post('/api/generate-concept', generateLimiter, async (req, res) => {
 
   const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 
-  const systemPrompt = `You are the creative director for Frank the Frog, a brand with a loyal following. The mascot "Franky" is a cool cartoon frog with big expressive eyes, a wide grin, and vibrant green skin. Franky embodies the brand — always current, always fun, perpetually chill.
+  const systemPrompt = `You are the creative director for Franky the Frog, a brand with a loyal following. The mascot "Franky" is a cool cartoon frog with big expressive eyes, a wide grin, and vibrant green skin. Franky embodies the brand — always current, always fun, perpetually chill.
 
 Brand voice rules:
 - Playful, never forced
@@ -78,7 +78,7 @@ Return ONLY valid JSON with no markdown fences, no extra text — just the raw J
   "pose": "Specific body pose and expression for Franky — be visual and precise (1-2 sentences)",
   "animation": "Describe what moves and how in the GIF — body parts, timing, loop behavior (2-3 sentences)",
   "caption": "6 words max. lowercase. fun energy. make it land.",
-  "hashtags": ["#FrankTheFrog", "#Franky", "#ThirdTag", "#FourthTag", "#FifthTag"],
+  "hashtags": ["#FrankyTheFrog", "#Franky", "#ThirdTag", "#FourthTag", "#FifthTag"],
   "giphyTags": ["tag1", "tag2", "tag3", "tag4", "tag5", "tag6"],
   "postTiming": "Best day + time to post with a 1-sentence reason"
 }`;
@@ -188,7 +188,7 @@ app.post('/api/tiktok/generate-concept', generateLimiter, async (req, res) => {
 
   const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 
-  const systemPrompt = `You are the creative director for Frank the Frog, a brand with a loyal following. The mascot "Franky" is a cool cartoon frog with big expressive eyes, a wide grin, and vibrant green skin. Franky embodies the brand — always current, always fun, perpetually chill.
+  const systemPrompt = `You are the creative director for Franky the Frog, a brand with a loyal following. The mascot "Franky" is a cool cartoon frog with big expressive eyes, a wide grin, and vibrant green skin. Franky embodies the brand — always current, always fun, perpetually chill.
 
 Brand voice rules:
 - Playful, never forced
@@ -208,7 +208,7 @@ Return ONLY valid JSON with no markdown fences, no extra text — just the raw J
   "concept": "Full video concept — what happens throughout, pacing, key moments (2-4 sentences)",
   "sound": "Exact sound recommendation — trending audio name/style or original audio with brief note on why it fits",
   "caption": "8 words max. lowercase. tiktok energy. make it viral.",
-  "hashtags": ["#FrankTheFrog", "#Franky", "#ThirdTag", "#FourthTag", "#FifthTag", "#SixthTag"],
+  "hashtags": ["#FrankyTheFrog", "#Franky", "#ThirdTag", "#FourthTag", "#FifthTag", "#SixthTag"],
   "format": "Video format (e.g. POV, Storytime, Tutorial, Day in the Life, Reaction, Duet, Stitch, Green Screen)",
   "postTiming": "Best day + time to post with a 1-sentence reason"
 }`;

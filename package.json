@@ -1,7 +1,7 @@
 {
   "name": "gif-pond",
   "version": "1.0.0",
-  "description": "The GIF Pond — Frank the Frog Content Intel Tool",
+  "description": "The GIF Pond — Franky the Frog Content Intel Tool",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
