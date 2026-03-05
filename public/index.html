@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The GIF Pond — Frank the Frog</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Toast notification -->
+  <div id="toast" class="toast" role="alert"></div>
+
+  <!-- ───────────── HEADER ───────────── -->
+  <header class="header">
+    <div class="header-brand">
+      <div class="cheese-avatar">
+        <img src="franky.jpg" alt="Franky" class="cheese-img">
+      </div>
+      <div class="brand-text">
+        <div class="brand-eyebrow">FRANK THE FROG</div>
+        <h1 class="brand-title">THE GIF POND</h1>
+        <div class="brand-tagline">content intel · multi-platform</div>
+      </div>
+    </div>
+
+    <div class="header-actions">
+      <button class="scan-btn" id="fetchTrends">
+        <span class="scan-btn-text">Scan Trends</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/>
+        </svg>
+      </button>
+      <div class="platform-indicator" id="platformIndicator">GIPHY</div>
+    </div>
+  </header>
+
+  <!-- ───────────── PLATFORM TABS ───────────── -->
+  <nav class="platform-tabs">
+    <button class="tab-btn active" data-tab="giphy">
+      <svg class="tab-icon" viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
+        <path d="M5 3h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zm7 4a5 5 0 1 0 0 10A5 5 0 0 0 12 7zm0 2a3 3 0 1 1 0 6 3 3 0 0 1 0-6z"/>
+      </svg>
+      <span>Giphy</span>
+    </button>
+
+    <button class="tab-btn" data-tab="tiktok">
+      <svg class="tab-icon" viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
+        <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.29 6.29 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.75a4.85 4.85 0 0 1-1.01-.06z"/>
+      </svg>
+      <span>TikTok</span>
+    </button>
+
+    <button class="tab-btn locked" data-tab="instagram">
+      <svg class="tab-icon" viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
+        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/>
+      </svg>
+      <span>Instagram</span>
+      <span class="lock-badge">SOON</span>
+    </button>
+
+    <button class="tab-btn locked" data-tab="youtube">
+      <svg class="tab-icon" viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
+        <path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/>
+      </svg>
+      <span>YouTube</span>
+      <span class="lock-badge">SOON</span>
+    </button>
+
+    <button class="tab-btn publish-tab-btn" data-tab="publish">
+      <svg class="tab-icon" viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
+        <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+      </svg>
+      <span>Publish</span>
+    </button>
+  </nav>
+
+  <!-- ───────────── TAB PANELS ───────────── -->
+
+  <!-- GIPHY TAB (active) -->
+  <div class="tab-panel" id="tab-giphy">
+    <main class="main-grid">
+
+      <!-- Panel 01: Trend Radar -->
+      <section class="panel" id="panel-trends">
+        <div class="panel-header">
+          <div class="panel-id">
+            <span class="panel-num">01</span>
+            <h2 class="panel-title">TREND RADAR</h2>
+          </div>
+          <span class="panel-badge" id="trend-count"></span>
+        </div>
+        <div class="panel-body" id="trends-container">
+          <div class="empty-state">
+            <div class="empty-icon">📡</div>
+            <p>Hit <strong>Scan Trends</strong> to load<br>live trending topics</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Panel 02: Concept Generator -->
+      <section class="panel" id="panel-generator">
+        <div class="panel-header">
+          <div class="panel-id">
+            <span class="panel-num">02</span>
+            <h2 class="panel-title">CONCEPT GENERATOR</h2>
+          </div>
+        </div>
+        <div class="panel-body">
+          <div class="active-topic-row">
+            <span class="topic-label">ACTIVE TOPIC</span>
+            <span class="topic-chip" id="active-topic-text">none selected</span>
+          </div>
+          <div class="custom-input-row">
+            <input
+              type="text"
+              id="customTopic"
+              class="custom-topic-input"
+              placeholder="or type a custom topic..."
+              maxlength="100"
+            >
+          </div>
+          <button class="generate-btn" id="generateBtn" disabled>
+            <span id="generateBtnContent">
+              <span>Generate Cheese Brief</span>
+              <span class="btn-emoji">🧀</span>
+            </span>
+          </button>
+          <div id="concept-preview"></div>
+        </div>
+      </section>
+
+      <!-- Panel 03: Brief Queue -->
+      <section class="panel" id="panel-queue">
+        <div class="panel-header">
+          <div class="panel-id">
+            <span class="panel-num">03</span>
+            <h2 class="panel-title">BRIEF QUEUE</h2>
+          </div>
+          <span class="panel-badge" id="queue-count">0</span>
+        </div>
+        <div class="panel-body">
+          <div id="brief-list">
+            <div class="empty-state">
+              <div class="empty-icon">📋</div>
+              <p>Generated briefs<br>will stack here</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- TIKTOK TAB (active) -->
+  <div class="tab-panel hidden" id="tab-tiktok">
+    <main class="main-grid">
+
+      <!-- Panel 01: TikTok Trend Radar -->
+      <section class="panel" id="tt-panel-trends">
+        <div class="panel-header">
+          <div class="panel-id">
+            <span class="panel-num tt-num">01</span>
+            <h2 class="panel-title">TREND RADAR</h2>
+          </div>
+          <span class="panel-badge" id="tt-trend-count"></span>
+        </div>
+        <div class="panel-body" id="tt-trends-container">
+          <div class="empty-state">
+            <div class="empty-icon">📡</div>
+            <p>Hit <strong>Scan Trends</strong> to load<br>live TikTok trending topics</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Panel 02: Video Concept Generator -->
+      <section class="panel" id="tt-panel-generator">
+        <div class="panel-header">
+          <div class="panel-id">
+            <span class="panel-num tt-num">02</span>
+            <h2 class="panel-title">VIDEO CONCEPT</h2>
+          </div>
+        </div>
+        <div class="panel-body">
+          <div class="active-topic-row">
+            <span class="topic-label">ACTIVE TOPIC</span>
+            <span class="topic-chip" id="tt-active-topic-text">none selected</span>
+          </div>
+          <div class="custom-input-row">
+            <input
+              type="text"
+              id="tt-customTopic"
+              class="custom-topic-input"
+              placeholder="or type a custom topic..."
+              maxlength="100"
+            >
+          </div>
+          <button class="generate-btn tt-generate-btn" id="tt-generateBtn" disabled>
+            <span id="tt-generateBtnContent">
+              <span>Generate Video Brief</span>
+              <span class="btn-emoji">🎬</span>
+            </span>
+          </button>
+          <div id="tt-concept-preview"></div>
+        </div>
+      </section>
+
+      <!-- Panel 03: Brief Queue -->
+      <section class="panel" id="tt-panel-queue">
+        <div class="panel-header">
+          <div class="panel-id">
+            <span class="panel-num tt-num">03</span>
+            <h2 class="panel-title">BRIEF QUEUE</h2>
+          </div>
+          <span class="panel-badge" id="tt-queue-count">0</span>
+        </div>
+        <div class="panel-body">
+          <div id="tt-brief-list">
+            <div class="empty-state">
+              <div class="empty-icon">🎬</div>
+              <p>Generated briefs<br>will stack here</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- INSTAGRAM TAB (coming soon) -->
+  <div class="tab-panel hidden" id="tab-instagram">
+    <div class="coming-soon">
+      <img src="franky.jpg" alt="Franky" class="coming-soon-img">
+      <h2 class="coming-soon-title">Instagram Intel</h2>
+      <p class="coming-soon-sub">Franky is editing the carousel.<br>Coming soon.</p>
+      <div class="coming-soon-badge">SOON</div>
+    </div>
+  </div>
+
+  <!-- YOUTUBE TAB (coming soon) -->
+  <div class="tab-panel hidden" id="tab-youtube">
+    <div class="coming-soon">
+      <img src="franky.jpg" alt="Franky" class="coming-soon-img">
+      <h2 class="coming-soon-title">YouTube Intel</h2>
+      <p class="coming-soon-sub">Franky is waiting for the monetization threshold.<br>Coming soon.</p>
+      <div class="coming-soon-badge">SOON</div>
+    </div>
+  </div>
+
+  <!-- PUBLISH TAB -->
+  <div class="tab-panel hidden" id="tab-publish">
+    <main class="publish-grid">
+
+      <!-- ── LEFT COLUMN ── -->
+      <div class="publish-col-left">
+
+        <!-- Step 01: Load Brief -->
+        <section class="panel">
+          <div class="panel-header">
+            <div class="panel-id">
+              <span class="panel-num pub-num">01</span>
+              <h2 class="panel-title">LOAD BRIEF</h2>
+            </div>
+          </div>
+          <div class="panel-body">
+            <p class="pub-helper">Select a saved brief to pre-fill all content fields</p>
+            <select id="pub-brief-select" class="pub-select">
+              <option value="">— choose a brief from your queue —</option>
+            </select>
+            <button class="pub-load-btn" id="pub-load-btn" disabled>Load Brief →</button>
+            <div id="pub-brief-loaded" class="pub-brief-loaded hidden">
+              <span class="pub-loaded-check">✓</span>
+              <span id="pub-brief-label" class="pub-loaded-text"></span>
+            </div>
+          </div>
+        </section>
+
+        <!-- Step 02: Upload File -->
+        <section class="panel">
+          <div class="panel-header">
+            <div class="panel-id">
+              <span class="panel-num pub-num">02</span>
+              <h2 class="panel-title">UPLOAD FILE</h2>
+            </div>
+            <span class="panel-badge" id="pub-file-badge"></span>
+          </div>
+          <div class="panel-body">
+            <div class="drop-zone" id="pub-drop-zone">
+              <input type="file" id="pub-file-input" accept=".gif,.mp4,image/gif,video/mp4" hidden>
+              <div class="drop-zone-content" id="pub-drop-content">
+                <div class="drop-icon-large">📁</div>
+                <p class="drop-title">Drop your GIF or MP4 here</p>
+                <p class="drop-sub">or <button class="drop-browse-btn" id="pub-browse-btn" type="button">browse files</button></p>
+                <p class="drop-formats">GIF · MP4 · max 100MB</p>
+              </div>
+              <div id="pub-file-preview"></div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+
+      <!-- ── RIGHT COLUMN ── -->
+      <div class="publish-col-right">
+
+        <!-- Step 03: Content -->
+        <section class="panel">
+          <div class="panel-header">
+            <div class="panel-id">
+              <span class="panel-num pub-num">03</span>
+              <h2 class="panel-title">CONTENT</h2>
+            </div>
+          </div>
+          <div class="panel-body">
+            <div class="pub-field-group">
+              <label class="pub-field-label">CAPTION</label>
+              <textarea id="pub-caption" class="pub-textarea" placeholder="Caption loads from brief, or type here..." rows="3"></textarea>
+            </div>
+            <div class="pub-field-group">
+              <label class="pub-field-label">HASHTAGS <span class="pub-field-hint">— press Enter to add</span></label>
+              <div class="pub-hashtag-zone" id="pub-hashtag-zone">
+                <div class="pub-hashtag-pills" id="pub-hashtag-pills"></div>
+                <input type="text" id="pub-hashtag-input" class="pub-hashtag-input" placeholder="#addtag">
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Step 04: Platforms -->
+        <section class="panel">
+          <div class="panel-header">
+            <div class="panel-id">
+              <span class="panel-num pub-num">04</span>
+              <h2 class="panel-title">PLATFORMS</h2>
+            </div>
+            <span class="pub-platforms-ready" id="pub-ready-count">0 ready</span>
+          </div>
+          <div class="panel-body pub-platforms-body">
+
+            <!-- Giphy -->
+            <div class="platform-card" id="pub-card-giphy">
+              <div class="platform-card-row">
+                <div class="platform-card-left">
+                  <span class="plat-badge plat-giphy">GIF</span>
+                  <div class="plat-info">
+                    <span class="plat-name">Giphy</span>
+                    <span class="plat-cred pending" id="pub-giphy-cred">⏳ Production key pending</span>
+                  </div>
+                </div>
+                <label class="tog">
+                  <input type="checkbox" id="pub-tog-giphy" class="tog-input" disabled>
+                  <span class="tog-track"><span class="tog-thumb"></span></span>
+                </label>
+              </div>
+              <div class="plat-extra" id="pub-giphy-extra">
+                <div class="pub-mini-row">
+                  <label class="pub-mini-label">UPLOAD TAGS</label>
+                  <input type="text" id="pub-giphy-tags" class="pub-mini-input" placeholder="crypto, web3, cheese, rat...">
+                </div>
+                <div class="pub-mini-row">
+                  <label class="pub-mini-label">RATING</label>
+                  <select id="pub-giphy-rating" class="pub-mini-select">
+                    <option value="g">G — General</option>
+                    <option value="pg">PG</option>
+                    <option value="pg-13">PG-13</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- Instagram -->
+            <div class="platform-card" id="pub-card-instagram">
+              <div class="platform-card-row">
+                <div class="platform-card-left">
+                  <span class="plat-badge plat-ig">IG</span>
+                  <div class="plat-info">
+                    <span class="plat-name">Instagram</span>
+                    <span class="plat-cred pending" id="pub-ig-cred">⏳ Credentials pending</span>
+                  </div>
+                </div>
+                <label class="tog">
+                  <input type="checkbox" id="pub-tog-ig" class="tog-input" disabled>
+                  <span class="tog-track"><span class="tog-thumb"></span></span>
+                </label>
+              </div>
+              <div class="plat-extra" id="pub-ig-extra">
+                <div class="pub-mini-row">
+                  <label class="pub-mini-label">POST TYPE</label>
+                  <select id="pub-ig-type" class="pub-mini-select">
+                    <option value="REELS">Reel</option>
+                    <option value="FEED">Feed Post</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- TikTok -->
+            <div class="platform-card" id="pub-card-tiktok">
+              <div class="platform-card-row">
+                <div class="platform-card-left">
+                  <span class="plat-badge plat-tt">TT</span>
+                  <div class="plat-info">
+                    <span class="plat-name">TikTok</span>
+                    <span class="plat-cred pending" id="pub-tt-cred">⏳ App approval pending</span>
+                  </div>
+                </div>
+                <label class="tog">
+                  <input type="checkbox" id="pub-tog-tt" class="tog-input" disabled>
+                  <span class="tog-track"><span class="tog-thumb"></span></span>
+                </label>
+              </div>
+              <div class="plat-extra" id="pub-tt-extra">
+                <div class="pub-mini-row">
+                  <label class="pub-mini-label">PRIVACY</label>
+                  <select id="pub-tt-privacy" class="pub-mini-select">
+                    <option value="PUBLIC_TO_EVERYONE">Public</option>
+                    <option value="FOLLOWER_OF_CREATOR">Followers only</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- YouTube -->
+            <div class="platform-card" id="pub-card-youtube">
+              <div class="platform-card-row">
+                <div class="platform-card-left">
+                  <span class="plat-badge plat-yt">YT</span>
+                  <div class="plat-info">
+                    <span class="plat-name">YouTube</span>
+                    <span class="plat-cred pending" id="pub-yt-cred">⏳ Credentials pending</span>
+                  </div>
+                </div>
+                <label class="tog">
+                  <input type="checkbox" id="pub-tog-yt" class="tog-input" disabled>
+                  <span class="tog-track"><span class="tog-thumb"></span></span>
+                </label>
+              </div>
+              <div class="plat-extra" id="pub-yt-extra">
+                <div class="pub-mini-row">
+                  <label class="pub-mini-label">VIDEO TITLE</label>
+                  <input type="text" id="pub-yt-title" class="pub-mini-input" placeholder="Video title...">
+                </div>
+                <div class="pub-mini-row">
+                  <label class="pub-mini-label">PRIVACY</label>
+                  <select id="pub-yt-privacy" class="pub-mini-select">
+                    <option value="public">Public</option>
+                    <option value="unlisted">Unlisted</option>
+                    <option value="private">Private</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- Publish button -->
+            <button class="pub-publish-btn" id="pub-publish-btn" disabled>
+              <span id="pub-publish-content">
+                <span>Publish to Selected Platforms</span>
+                <span>🚀</span>
+              </span>
+            </button>
+
+            <!-- Results -->
+            <div id="pub-results" class="pub-results hidden"></div>
+
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
